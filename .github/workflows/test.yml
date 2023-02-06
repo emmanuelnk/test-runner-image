@@ -1,4 +1,4 @@
-  Name: Test Runner Image
+  name: Test Runner Image
   
   on:
     workflow_dispatch:
