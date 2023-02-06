@@ -20,6 +20,16 @@
              mysql -s -N -h localhost -uroot -proot -e "GRANT USAGE ON *.* TO 'user12'@'localhost';"
              mysql -s -N -h localhost -uroot -proot -e "GRANT PROCESS ON *.* TO 'user12'@'localhost';"
              echo "starting mysqldump to backup testdb12 to testdb.sql"
-             mysqldump -uuser12 -pPass12 testdb12 > ./testdb.sql
+             mysqldump \
+             -uuser12 \
+             -pPass12 \
+             --single-transaction \
+             --no-tablespaces \
+             --routines \
+             --column-statistics=0 \
+             --set-gtid-purged=OFF \
+             --triggers \
+             testdb12 > ./testdb.sql
              ls -la ./testdb.sql
+
            
